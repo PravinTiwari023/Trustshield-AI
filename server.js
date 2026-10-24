@@ -5,10 +5,10 @@ import { promisify } from 'node:util';
 import { fileURLToPath } from 'node:url';
 
 const app = express();
-const port = 4173;
+const port = Number(process.env.PORT || 4173);
 const origin = `http://127.0.0.1:${port}`;
 const token = randomBytes(32).toString('hex');
-const enabled = process.platform === 'win32' && process.env.ENABLE_SYSTEM_RESTART === 'true';
+const enabled = process.platform === 'win32' && process.env.ENABLE_SYSTEM_RESTART !== 'false';
 const execute = promisify(execFile);
 let deadline = null;
 let operating = false;

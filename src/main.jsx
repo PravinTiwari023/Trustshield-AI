@@ -32,7 +32,7 @@ function App() {
       const response = await fetch(`/api/${path}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Device-Token': session.token },
-        body: JSON.stringify({ confirmation: path === 'restart' ? 'Continue to Trustsure AI' : undefined }),
+        body: JSON.stringify({ confirmation: path === 'restart' ? 'RESTART THIS PC' : undefined }),
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error);
